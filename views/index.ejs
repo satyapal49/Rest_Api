@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO App</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>Todo App (Add task, delete task, update task)</h1>
+    <% for(post of posts) {%>
+        <div class="post">
+            <!-- <h5 class="id"><%= post.id %>Task id</h5> -->
+            <h3 class="user">Assigned by : @<%= post.username %></h3>
+            <h4 class="content"><%= post.content %></h4>
+            <br>
+
+            
+            <a href="http://localhost:8080/posts/<%=post.id%>">See in details</a>
+            <a href="http://localhost:8080/posts/<%=post.id%>/edit">Edit Task</a>
+            
+            <form action="/posts/<%=post.id%>?_method=DELETE" method="post">
+                <button>Delete Task</button>
+
+                <hr>
+            </form>
+        </div>
+    <% } %>
+    <br>
+    <form action="/posts/new">
+        <button type="submit">Add New Post</button>
+    </form>
+</body>
+</html>
